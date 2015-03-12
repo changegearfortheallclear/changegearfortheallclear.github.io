@@ -216,15 +216,9 @@ function markerOverlay(map, position, bikeTotal, rowTotal) {
  */
 markerOverlay.prototype.onAdd = function() {
 
-  var s = '<div id="progressMarker"><div id="bikeData"><span class="distance">200</span> <span class="units">MI</span><br><span class="togo"><span class="distance">180</span> <span class="units">MI TO GO</span></span></div>'
-  s += '<div id="rowData"><span class="distance">200</span> <span class="units">MI</span><br><span class="togo"><span class="distance">180</span> <span class="units">MI TO GO</span></span></div>'
-  s += '<svg version="1.1" width="150" height="150" xmlns="http://www.w3.org/2000/svg">'
-  s += '<circle cx="75" cy="75" r="10" style="fill: #fff" />'
-  s += '<path id="rowRing" d="M 75, 75 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0 " style="fill: none; stroke: #E67E22; stroke-width: 12; stroke-linecap: round" stroke-dasharray="" stroke-dashoffset="" transform="rotate(90, 75, 75)" />'
-  s += '<path id="bikeRing" d="M 75, 75 m -57, 0 a 57,57 0 1,0 114,0 a 57,57 0 1,0 -114,0 " style="fill: none; stroke: #2ECC71; stroke-width: 12; stroke-linecap: round" stroke-dasharray="" stroke-dashoffset="" transform="rotate(90, 75, 75)" />'
-  s += '</svg></div>'
 
-  var div = $(s)[0];
+
+  var div = $($('#progress_marker_templ').html())[0];
 
   this.div_ = div;
 
@@ -247,10 +241,10 @@ markerOverlay.prototype.draw = function() {
   bikeRing.attr({'stroke-dasharray': bikeLen+' '+bikeLen, 'stroke-dashoffset': ''+(-bikeLen+(bikeLen*bikePercent))});
   rowRing.attr({'stroke-dasharray': rowLen+' '+rowLen, 'stroke-dashoffset': ''+(-rowLen+(rowLen*rowPercent))});
 
-  $('#bikeData > .distance').text((this.bikeDist_/1609.344).toFixed(1));
+  $('#bikeData .distance').first().text((this.bikeDist_/1609.344).toFixed(1));
   $('#bikeData .togo .distance').text((this.bikeDist_ > this.bikeTotal_) ? 0 : ((this.bikeTotal_-this.bikeDist_)/1609.344).toFixed(1));
 
-  $('#rowData > .distance').text((this.rowDist_/1609.344).toFixed(1));
+  $('#rowData .distance').first().text((this.rowDist_/1609.344).toFixed(1));
   $('#rowData .togo .distance').text((this.rowDist_ > this.rowTotal_) ? 0 : ((this.rowTotal_-this.rowDist_)/1609.344).toFixed(1));
 
 

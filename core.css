@@ -32,11 +32,20 @@ span.small {
   left: 15px;
   background: #00ACC8;
   padding: 10px;
-  color: #FFF;
+  color: #fff;
   font-weight: 900;
   font-size: 19px;
   width: 216px;
   text-align: center;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a, a:hover, a:active, a:focus {
+  outline: 0;
 }
 
 #progressMarker {
@@ -45,40 +54,47 @@ span.small {
   height: 150px;
   margin-left: -75px;
   margin-top: -75px;
+  font-family: 'MuseoSans', sans-serif;
+  line-height: 38px;
 }
 
 #bikeData, #rowData {
   position: absolute;
-  font-family: 'MuseoSans', sans-serif;
-  font-weight: 900;
-  color: #2ECC71;
   height: 90px;
   margin-top: -45px;
   top: 50%;
   left: 100%;
-  width: 200px;
-  text-shadow: 0px 0px 3px rgba(255,255,255,1), 0px 0px 3px rgba(255,255,255,1), 0px 0px 3px rgba(255,255,255,1);
+  width: 250px;
+  color: #fff;
+  font-weight: 900;
+  font-size: 40px;
+  padding-top: 5px;
 }
 
 #rowData {
   left: auto;
   right: 100%;
-  color: #E67E22;
   text-align: right;
 }
 
-.distance {
-  font-size: 40px;
-}
-.units {
-  font-size: 35px;
-  color: #fff !important;
-  text-shadow: 0px 0px 3px rgba(0,0,0,1) !important;
+#bikeData > span {
+  background: #2ecc71;
+  padding: 0px 10px;
 }
 
-.togo .distance {
+#rowData > span {
+  background: #e67e22;
+  padding: 0px 10px;
+}
+
+#bikeData .units, #rowData .units {
+  font-size: 35px;
+}
+
+#bikeData .togo, #rowData .togo {
   font-size: 34px;
 }
-.togo .units {
+
+#bikeData .togo .units, #rowData .togo .units {
   font-size: 23px;
 }

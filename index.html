@@ -13,14 +13,43 @@
     <script type="text/javascript" src="main.js"></script>
   </head>
   <body>
-<div id="map-canvas"></div>
 
-<div id="title"><span>CHANGE GEAR</span><br/><span class="small">for the</span><br/><span>ALL CLEAR</span></div>
+    <div id="map-canvas"></div>
 
-<div id="hfcrlogo">
-  <img src="hfcr_logo.svg" width="216" height="112">
-  <a href="http://www.hfcr.org">www.hfcr.org</a>
-</div>
+    <div id="title"><span>CHANGE GEAR</span><br/><span class="small">for the</span><br/><span>ALL CLEAR</span></div>
+
+    <div id="hfcrlogo">
+      <img src="hfcr_logo.svg" width="216" height="112">
+      <a href="http://www.hfcr.org">www.hfcr.org</a>
+    </div>
+
+    <script id="progress_marker_templ" type="text/x-handlebars-template">
+
+      <div id="progressMarker">
+
+        <div id="bikeData">
+
+          <span><span class="distance">0</span> <span class="units">MI</span></span><br>
+          <span class="togo"><span class="distance">0</span> <span class="units">MI TO GO</span></span>
+
+        </div>
+
+        <div id="rowData">
+
+          <span><span class="distance">0</span> <span class="units">MI</span></span><br>
+          <span class="togo"><span class="distance">0</span> <span class="units">MI TO GO</span></span>
+
+        </div>
+
+        <svg version="1.1" width="150" height="150" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="75" cy="75" r="10" style="fill: #fff" />
+          <path id="rowRing" d="M 75, 75 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0 " style="fill: none; stroke: #E67E22; stroke-width: 14;" stroke-dasharray="" stroke-dashoffset="" transform="rotate(90, 75, 75)" />
+          <path id="bikeRing" d="M 75, 75 m -59, 0 a 59,59 0 1,0 118,0 a 59,59 0 1,0 -118,0 " style="fill: none; stroke: #2ECC71; stroke-width: 14;" stroke-dasharray="" stroke-dashoffset="" transform="rotate(90, 75, 75)" />
+        </svg>
+
+      </div>
+
+    </script>
 
   </body>
 </html>
