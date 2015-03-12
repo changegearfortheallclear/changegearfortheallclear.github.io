@@ -43,6 +43,12 @@ function loadPath(data) {
 
   };
 
+  // add bounds point to shift map to avoid title
+
+  bounds.extend(new google.maps.LatLng(50.2110, -5.4800));
+
+  //
+
   route.bounds = bounds;
 
   route.pathDistance = totalDistance;
