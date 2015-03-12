@@ -98,3 +98,15 @@ a, a:hover, a:active, a:focus {
 #bikeData .togo .units, #rowData .togo .units {
   font-size: 23px;
 }
+
+#bikeData img {
+  position: absolute;
+  bottom: 110%;
+  left: 0px;
+}
+
+#rowData img {
+  position: absolute;
+  bottom: 110%;
+  right: 0px;
+}
