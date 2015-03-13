@@ -125,11 +125,14 @@ function initMap() {
 
   $(document).on('keypress', function(e) {
     if (e.key === 'r') {
-      updateProgress();
+      progressData.fetch();
     }
   })
 
-  updateProgress();
+  // init progress data
+
+  progressData = Tabletop.init({ key: '1HpgLgPfUj-JLnKWLNFkApnYufgLTWcR1y3cqJHytyj0', callback: updateMarker, simpleSheet: true, parseNumbers: true, prettyColumnNames: false })
+
   
 }
 
@@ -139,52 +142,43 @@ function resize() {
 
 }
 
-function updateProgress() {
+function updateProgress(data) {
 
-  // load progress data
+  console.log(data);
 
-  Tabletop.init({ key: '1HpgLgPfUj-JLnKWLNFkApnYufgLTWcR1y3cqJHytyj0', callback: updateMarker, simpleSheet: true, parseNumbers: true, prettyColumnNames: false })
+  var progress = (data[0].bike + data[0].row) / route.trueDistance
 
-  function updateMarker(data) {
+  if (progress > 1) {
+    progress = 1;
+  }
 
-    console.log(data);
+  var scaledProgress = progress * route.pathDistance;
 
-    var progress = (data[0].bike + data[0].row) / route.trueDistance
+  var runningTotal = 0;
+  var progressPath = [route.path[0]];
 
-    if (progress > 1) {
-      progress = 1;
+  for (var i = 1; i < route.distances.length; i++) {
+
+    if (scaledProgress <= runningTotal+route.distances[i]) {
+
+      var firstPos = route.path[i-1];
+      var secondPos = route.path[i];
+
+      var fraction = (scaledProgress - runningTotal) / route.distances[i];
+
+      progressMarker.setPosition(google.maps.geometry.spherical.interpolate(firstPos, secondPos, fraction), data[0].bike, data[0].row);
+
+      progressPath.push(google.maps.geometry.spherical.interpolate(firstPos, secondPos, fraction));
+
+      progressPolyline.setPath(progressPath);
+
+      break;
+
     }
-
-    var scaledProgress = progress * route.pathDistance;
-
-    var runningTotal = 0;
-    var progressPath = [];
-
-    for (var i = 0; i < route.distances.length+1; i++) {
-
-      if (runningTotal >= scaledProgress) {
-
-        var firstPos = route.path[i-2];
-        var secondPos = route.path[i-1];
-
-        var fraction = (scaledProgress - (runningTotal-route.distances[i-1])) / route.distances[i-1];
-
-        progressMarker.setPosition(google.maps.geometry.spherical.interpolate(firstPos, secondPos, fraction), data[0].bike, data[0].row);
-
-        progressPath.pop();
-        progressPath.push(google.maps.geometry.spherical.interpolate(firstPos, secondPos, fraction));
-
-        progressPolyline.setPath(progressPath);
-
-        break;
-
-      }
-      else {
-        runningTotal += route.distances[i]
-        progressPath.push(route.path[i]);
-      }
+    else {
+      runningTotal += route.distances[i]
+      progressPath.push(route.path[i]);
     }
-
   }
 
 }
