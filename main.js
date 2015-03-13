@@ -131,7 +131,7 @@ function initMap() {
 
   // init progress data
 
-  progressData = Tabletop.init({ key: '1HpgLgPfUj-JLnKWLNFkApnYufgLTWcR1y3cqJHytyj0', callback: updateMarker, simpleSheet: true, parseNumbers: true, prettyColumnNames: false })
+  progressData = Tabletop.init({ key: '1HpgLgPfUj-JLnKWLNFkApnYufgLTWcR1y3cqJHytyj0', callback: updateProgress, simpleSheet: true, parseNumbers: true, prettyColumnNames: false })
 
   
 }
