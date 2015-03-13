@@ -241,11 +241,15 @@ markerOverlay.prototype.draw = function() {
   bikeRing.attr({'stroke-dasharray': bikeLen+' '+bikeLen, 'stroke-dashoffset': ''+(-bikeLen+(bikeLen*bikePercent))});
   rowRing.attr({'stroke-dasharray': rowLen+' '+rowLen, 'stroke-dashoffset': ''+(-rowLen+(rowLen*rowPercent))});
 
-  $('#bikeData .distance').first().text((this.bikeDist_/1609.344).toFixed(1));
-  $('#bikeData .togo .distance').text((this.bikeDist_ > this.bikeTotal_) ? 0 : ((this.bikeTotal_-this.bikeDist_)/1609.344).toFixed(1));
+  $('#bikeData .progress .distance').text( (bikePercent === 1) ? '' : (this.bikeDist_/1609.344).toFixed(1) );
+  $('#bikeData .progress .units').text( (bikePercent === 1) ? 'GOAL REACHED' : 'MI' );
+  $('#bikeData .togo .distance').text( (bikePercent === 1) ? ((this.bikeDist_-this.bikeTotal_)/1609.344).toFixed(1) : ((this.bikeTotal_-this.bikeDist_)/1609.344).toFixed(1) );
+  $('#bikeData .togo .units').text( (bikePercent === 1) ? 'MI OVER GOAL' : 'MI TO GO' );
 
-  $('#rowData .distance').first().text((this.rowDist_/1609.344).toFixed(1));
-  $('#rowData .togo .distance').text((this.rowDist_ > this.rowTotal_) ? 0 : ((this.rowTotal_-this.rowDist_)/1609.344).toFixed(1));
+  $('#rowData .progress .distance').text( (rowPercent === 1) ? '' : (this.rowDist_/1609.344).toFixed(1) );
+  $('#rowData .progress .units').text( (rowPercent === 1) ? 'GOAL REACHED' : 'MI' );
+  $('#rowData .togo .distance').text( (rowPercent === 1) ? ((this.rowDist_-this.rowTotal_)/1609.344).toFixed(1) : ((this.rowTotal_-this.rowDist_)/1609.344).toFixed(1) );
+  $('#rowData .togo .units').text( (rowPercent === 1) ? 'MI OVER GOAL' : 'MI TO GO' );
 
 
   var overlayProjection = this.getProjection();
