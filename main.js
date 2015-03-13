@@ -37,7 +37,9 @@ function updateBounds(LatLngArray) {
 
   // trigger resize
 
-  $(window).resize();
+  //$(window).resize();
+
+  resize();
 
 }
 
@@ -134,7 +136,7 @@ function initMap() {
   progressMarker = new markerOverlay(mainMap, markers.start, route.bikeDistance, route.rowDistance);
 
 
-  $(window).resize(resize);
+  //$(window).resize(resize);
 
   updateBounds([]);
 
@@ -275,6 +277,16 @@ markerOverlay.prototype.draw = function() {
   var div = this.div_;
   div.style.left = pos.x + 'px';
   div.style.top = pos.y + 'px';
+
+  // fit bounds to include marker
+  // 730 x 200 px
+  // 365 x 125 px
+
+  var topleft = overlayProjection.fromDivPixelToLatLng(new google.maps.Point(pos.x-365, pos.y-125));
+  var bottomright = overlayProjection.fromDivPixelToLatLng(new google.maps.Point(pos.x+365, pos.y+75));
+
+  updateBounds([topleft, bottomright]);
+
 };
 
 markerOverlay.prototype.onRemove = function() {
