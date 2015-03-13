@@ -17,6 +17,30 @@ function initialize() {
   
 }
 
+function updateBounds(LatLngArray) {
+
+  route.bounds = new google.maps.LatLngBounds();
+
+  // path bounds
+
+  route.bounds.extend(route.path[0]);
+  route.bounds.extend(route.path[route.path.length-1]);
+
+  // add bounds point to shift map to avoid title
+  route.bounds.extend(new google.maps.LatLng(50.2110, -5.4800));
+
+  // add points from array
+
+  for (var i = 0; i < LatLngArray.length; i++) {
+    route.bounds.extend(LatLngArray[i]);
+  };
+
+  // trigger resize
+
+  $(window).resize();
+
+}
+
 function loadPath(data) {
 
   route = {};
@@ -26,13 +50,10 @@ function loadPath(data) {
   route.distances = [];
 
   var totalDistance = 0;
-  var bounds = new google.maps.LatLngBounds();
 
   for (var i = 0; i < data.path.elements.length; i++) {
 
-    var latLng = new google.maps.LatLng(data.path.elements[i].lat, data.path.elements[i].lng)
-
-    bounds.extend(latLng);
+    var latLng = new google.maps.LatLng(data.path.elements[i].lat, data.path.elements[i].lng);
 
     var distanceFromLast = (i === 0) ? 0 : google.maps.geometry.spherical.computeDistanceBetween(route.path[i-1], latLng)
 
@@ -42,14 +63,6 @@ function loadPath(data) {
     route.distances.push(distanceFromLast);
 
   };
-
-  // add bounds point to shift map to avoid title
-
-  bounds.extend(new google.maps.LatLng(50.2110, -5.4800));
-
-  //
-
-  route.bounds = bounds;
 
   route.pathDistance = totalDistance;
 
@@ -121,7 +134,9 @@ function initMap() {
   progressMarker = new markerOverlay(mainMap, markers.start, route.bikeDistance, route.rowDistance);
 
 
-  $(window).resize(resize).resize();
+  $(window).resize(resize);
+
+  updateBounds([]);
 
   $(document).on('keypress', function(e) {
     if (e.key === 'r') {
