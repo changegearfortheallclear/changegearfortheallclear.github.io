@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="font.css">
+    <link rel="stylesheet" type="text/css" href="core.css">
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8EJe93d_R8WwDek9wWaiUmEYf-OxTwLo&libraries=geometry"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="tabletop.js"></script>
+
+    <script type="text/javascript" src="main.js"></script>
+  </head>
+  <body>
+
+    <div id="map-canvas"></div>
+
+    <div id="title"><span>CHANGE GEAR</span><br/><span class="small">for the</span><br/><span>ALL CLEAR</span></div>
+
+    <div id="hfcrlogo">
+      <img src="hfcr_logo.svg" width="216" height="112">
+      <a href="http://www.hfcr.org">www.hfcr.org</a>
+    </div>
+
+    <div id="loading">
+
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+      <path fill="#1267FF" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+        <animateTransform attributeType="xml"
+          attributeName="transform"
+          type="rotate"
+          from="0 25 25"
+          to="360 25 25"
+          dur="0.6s"
+          repeatCount="indefinite"/>
+        </path>
+      </svg>
+
+    </div>  
+
+    <script id="progress_marker_templ" type="text/x-handlebars-template">
+
+      <div id="progressMarker">
+
+        <div id="bikeData">
+
+          <img src="bike.svg" width="86" height="72">
+
+          <span class="progress"><span class="distance">0</span> <span class="units">MI</span></span><br>
+          <span class="togo"><span class="distance">0</span> <span class="units">MI TO GO</span></span>
+
+        </div>
+
+        <div id="rowData">
+
+          <img src="row.svg" width="107" height="68">
+
+          <span class="progress"><span class="distance">0</span> <span class="units">MI</span></span><br>
+          <span class="togo"><span class="distance">0</span> <span class="units">MI TO GO</span></span>
+
+        </div>
+
+        <svg version="1.1" width="150" height="150" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="75" cy="75" r="10" style="fill: #fff" />
+          <path id="rowRing" d="M 75, 75 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0 " style="fill: none; stroke: #E67E22; stroke-width: 14;" stroke-dasharray="" stroke-dashoffset="" transform="rotate(90, 75, 75)" />
+          <path id="bikeRing" d="M 75, 75 m -59, 0 a 59,59 0 1,0 118,0 a 59,59 0 1,0 -118,0 " style="fill: none; stroke: #2ECC71; stroke-width: 14;" stroke-dasharray="" stroke-dashoffset="" transform="rotate(90, 75, 75)" />
+        </svg>
+
+      </div>
+
+    </script>
+
+  </body>
+</html>

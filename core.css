@@ -1,0 +1,122 @@
+html, body, #map-canvas {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'MuseoSans', sans-serif;
+}
+
+#title {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  color: #fff;
+  font-size: 70px;
+  font-weight: 900;
+  /*text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);*/
+  line-height: 90%;
+  text-transform: uppercase;
+}
+
+#title > span {
+  background: #00ACC8;
+  padding: 0px 12px;
+}
+
+span.small {
+  font-size: 80%;
+}
+
+#hfcrlogo {
+  position: absolute;
+  bottom: 0px;
+  left: 15px;
+  background: #00ACC8;
+  padding: 10px;
+  color: #fff;
+  font-weight: 900;
+  font-size: 19px;
+  width: 216px;
+  text-align: center;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a, a:hover, a:active, a:focus {
+  outline: 0;
+}
+
+#progressMarker {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  margin-left: -75px;
+  margin-top: -75px;
+  font-family: 'MuseoSans', sans-serif;
+  line-height: 38px;
+}
+
+#bikeData, #rowData {
+  position: absolute;
+  height: 90px;
+  margin-top: -45px;
+  top: 50%;
+  left: 100%;
+  width: 290px;
+  color: #fff;
+  font-weight: 900;
+  font-size: 38px;
+  padding-top: 5px;
+}
+
+#rowData {
+  left: auto;
+  right: 100%;
+  text-align: right;
+}
+
+#bikeData > span {
+  background: #2ecc71;
+  padding: 0px 10px;
+}
+
+#rowData > span {
+  background: #e67e22;
+  padding: 0px 10px;
+}
+
+#bikeData .units, #rowData .units {
+  font-size: 32px;
+}
+
+#bikeData .togo, #rowData .togo {
+  font-size: 34px;
+}
+
+#bikeData .togo .units, #rowData .togo .units {
+  font-size: 23px;
+}
+
+#bikeData img {
+  position: absolute;
+  bottom: 110%;
+  left: 0px;
+}
+
+#rowData img {
+  position: absolute;
+  bottom: 110%;
+  right: 0px;
+}
+
+#loading {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.hidden {
+  display: none;
+}
