@@ -142,7 +142,7 @@ function initMap() {
 
   $(document).on('keypress', function(e) {
     if (e.key === 'r') {
-      progressData.fetch();
+      refreshData();
     }
   })
 
@@ -150,6 +150,10 @@ function initMap() {
 
   progressData = Tabletop.init({ key: '1HpgLgPfUj-JLnKWLNFkApnYufgLTWcR1y3cqJHytyj0', callback: updateProgress, simpleSheet: true, parseNumbers: true, prettyColumnNames: false })
 
+
+  // auto update
+
+  setInterval(refreshData, 5*60*1000) // 5 min
   
 }
 
@@ -159,7 +163,17 @@ function resize() {
 
 }
 
+function refreshData() {
+
+  $('#loading').removeClass('hidden');
+
+  progressData.fetch();
+
+}
+
 function updateProgress(data) {
+
+  $('#loading').addClass('hidden');
 
   console.log(data);
 
