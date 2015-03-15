@@ -115,6 +115,9 @@ a, a:hover, a:active, a:focus {
   position: absolute;
   top: 10px;
   right: 10px;
+  background: #00ACC8;
+  height: 40px;
+  width: 40px;
 }
 
 .hidden {
@@ -142,4 +145,38 @@ body:-webkit-full-screen #fullscreenOverlay {
 }
 body:-ms-fullscreen #fullscreenOverlay {
   display: block;
+}
+
+#totals {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  font-weight: 900;
+  font-size: 24px;
+  color: #00ACC8;
+  text-align: right;
+}
+
+#totals > span {
+  display: inline-block;
+  background: #fff;
+  padding: 0 8px;
+}
+
+#totals .heading {
+  font-size: 26px;
+  color: #007E93;
+  margin-top: 10px;
+}
+
+#totals .units {
+  font-size: 80%;
+}
+
+#totals .bike {
+  color: #2ecc71;
+}
+
+#totals .row {
+  color: #e67e22;
 }

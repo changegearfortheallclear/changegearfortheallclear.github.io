@@ -231,6 +231,16 @@ function updateProgress(data) {
     }
   }
 
+  // sidebar values
+
+  $('#totals_distance').text( ((data[0].bike+data[0].row)/1609.344).toFixed(1) + '/' + (route.trueDistance/1609.344).toFixed(1) );
+
+  $('#totals_bestbike').text( (data[0].bestbike === 0) ? '-' : (data[0].bestbike/1609.344).toFixed(1) );
+  $('#totals_bestbikename').text( (data[0].bestbike === 0) ? '-' : data[0].bestbikename );
+
+  $('#totals_bestrow').text( (data[0].bestrow === 0) ? '-' : (data[0].bestrow/1609.344).toFixed(1) );
+  $('#totals_bestrowname').text( (data[0].bestrow === 0) ? '-' : data[0].bestrowname );
+
 }
 
 
