@@ -136,7 +136,7 @@ function initMap() {
   progressMarker = new markerOverlay(mainMap, markers.start, route.bikeDistance, route.rowDistance);
 
 
-  //$(window).resize(resize);
+  $(window).resize(resize);
 
   updateBounds([]);
 
@@ -157,9 +157,20 @@ function initMap() {
   
 }
 
-function resize() {
+function resize(e) {
 
-  mainMap.fitBounds(route.bounds);
+  if (typeof e !== 'undefined') {
+
+    mainMap.setZoom(7);
+
+  }
+
+  var listener = google.maps.event.addListener(mainMap, "idle", function() { 
+
+    mainMap.fitBounds(route.bounds);
+    google.maps.event.removeListener(listener); 
+
+  });
 
 }
 
