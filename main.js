@@ -35,12 +35,6 @@ function updateBounds(LatLngArray) {
     route.bounds.extend(LatLngArray[i]);
   };
 
-  // trigger resize
-
-  //$(window).resize();
-
-  resize();
-
 }
 
 function loadPath(data) {
@@ -173,11 +167,11 @@ function initMap() {
 
 function resize(e) {
 
-  if (typeof e !== 'undefined') {
+  //if (typeof e !== 'undefined') {
 
-    mainMap.setZoom(7);
+    mainMap.setZoom(8);
 
-  }
+  //}
 
   var listener = google.maps.event.addListener(mainMap, "idle", function() { 
 
@@ -341,6 +335,8 @@ markerOverlay.prototype.setPosition = function(position, bikeDist, rowDist) {
     this.rowDist_ = rowDist;
 
     this.draw();
+
+    resize();
 
   }
 };
