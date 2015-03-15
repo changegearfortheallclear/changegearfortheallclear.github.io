@@ -156,6 +156,8 @@ function initMap() {
 
   // init progress data
 
+  lastData = '';
+
   progressData = Tabletop.init({ key: '1lSPcaGp-aKeI70Hk23ePsMK1D4Y9_HXlWsfwHT-i02Y', callback: updateProgress, simpleSheet: true, parseNumbers: true, prettyColumnNames: false })
 
 
@@ -195,6 +197,16 @@ function updateProgress(data) {
   $('#loading').addClass('hidden');
 
   console.log(data);
+
+  // compare to last data
+
+  if (JSON.stringify(data) == lastData) {
+    return;
+  }
+  else {
+    lastData = JSON.stringify(data);
+  }
+
 
   var progress = (data[0].bike + data[0].row) / route.trueDistance
 
