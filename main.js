@@ -141,8 +141,22 @@ function initMap() {
   updateBounds([]);
 
   $(document).on('keypress', function(e) {
-    if (e.key === 'r') {
+    if (e.key === 'r') { // refresh
       refreshData();
+    }
+    if (e.key === 'f') { // fullscreen
+
+      var elem = $('body')[0];
+
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      }
     }
   })
 
