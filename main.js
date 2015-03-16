@@ -135,10 +135,10 @@ function initMap() {
   updateBounds([]);
 
   $(document).on('keypress', function(e) {
-    if (e.key === 'r') { // refresh
+    if (e.which === 114) { // 'r' refresh
       refreshData();
     }
-    if (e.key === 'f') { // fullscreen
+    if (e.which === 102) { // 'f' fullscreen
 
       var elem = $('body')[0];
 
