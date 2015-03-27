@@ -252,6 +252,12 @@ function updateProgress(data) {
 
   $('#totals_bestrow').text( (data[0].bestrow === 0) ? '-' : (data[0].bestrow/1609.344).toFixed(1) );
   $('#totals_bestrowname').text( (data[0].bestrow === 0) ? '-' : data[0].bestrowname );
+  
+  $('#totals_worstbike').text( (data[0].worstbike === 0) ? '-' : (data[0].worstbike/1609.344).toFixed(1) );
+  $('#totals_worstbikename').text( (data[0].worstbike === 0) ? '-' : data[0].worstbikename );
+
+  $('#totals_worstrow').text( (data[0].worstrow === 0) ? '-' : (data[0].worstrow/1609.344).toFixed(1) );
+  $('#totals_worstrowname').text( (data[0].worstrow === 0) ? '-' : data[0].worstrowname );
 
 }
 
